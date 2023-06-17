@@ -1,0 +1,280 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "My API",
+    "description": "Description",
+    "version": "1.0.0"
+  },
+  "host": "todolist-237p.onrender.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/reminders/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": 
+            {
+              "type": "object",
+              "properties": {
+                "reminder": {
+                  "example": "any"
+                },
+                "check": {
+                  "example": false
+                },
+                "title": {
+                  "example": "any"
+                },
+                "deadline": {
+                  "example": "08/03/2023"
+                },
+                "place": {
+                  "example": "Rexburg"
+                },
+                "priority": {
+                  "example": false
+                },
+                "friend": {
+                  "example": false
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
+          }
+        }
+      }
+    },
+    "/reminders/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Product does not exist"
+          },
+          "400": {
+            "description": "Invalid reminder Id"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema":
+            {
+              "type": "object",
+              "properties": {
+                "reminder": {
+                  "example": "any"
+                },
+                "check": {
+                  "example": false
+                },
+                "title": {
+                  "example": "any"
+                },
+                "deadline": {
+                  "example": "08/03/2023"
+                },
+                "place": {
+                  "example": "Rexburg"
+                },
+                "priority": {
+                  "example": false
+                },
+                "friend": {
+                  "example": false
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "404": {
+            "description": "Product does not exist"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Invalid reminder Id"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Product does not exist"
+          },
+          "400": {
+            "description": "Invalid reminder Id"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
+          }
+        }
+      }
+    },
+    "/users/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": 
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Claudio Parker"
+                },
+                "email": {
+                  "example": "claudio@parker.com"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
+          }
+        }
+      }},
+      "/users/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Product does not exist"
+          },
+          "400": {
+            "description": "Invalid reminder Id"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
+          }
+        }
+      }
+    }
+  }
+}
