@@ -1,21 +1,23 @@
 {
-  "name": "webservicesfinalproject",
+  "name": "w01",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "swagger": "node swagger.js"
+    "swagger": "node ./swagger.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.1.4",
+    "@hapi/joi": "^17.1.1",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-openid-connect": "^2.16.0",
-    "express-validator": "^7.0.1",
-    "mongoose": "^7.2.4",
+    "http-errors": "^2.0.0",
+    "mongoose": "^7.1.0",
     "nodemon": "^2.0.22",
     "swagger-ui-express": "^4.6.3"
   },

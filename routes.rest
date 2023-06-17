@@ -1,0 +1,35 @@
+### GET SWAGGER
+GET http://localhost:8080/api-docs   HTTP/1.1
+
+### get login
+GET http://localhost:8080/login HTTP/1.1
+
+
+### GET ALL REMINDERS
+GET http://localhost:8080/reminders/ HTTP/1.1
+
+
+### GET REMINDER
+GET http://localhost:8080/reminders/646e25e482a9f9ecde19d90c HTTP/1.1
+
+
+
+### POST NEW REMINDER
+POST  http://localhost:8080/reminders   HTTP/1.1
+content-type: application/json
+
+{
+    "reminder": "trying to make it work from the localhost"
+}
+
+
+### EDIT REMINDER 
+PUT http://localhost:8080/reminders/646fe4f970e2b9d63f33c HTTP/1.1 
+content-type: application/json
+
+{
+    "reminder": "wash the something"
+}
+
+### DELETE REMINDER
+DELETE http://localhost:8080/reminders/646feeb35efcfa64b5f HTTP/1.1
