@@ -12,6 +12,7 @@ const config = {
   issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL
 };
 
+
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 routes.use(auth(config));
 
