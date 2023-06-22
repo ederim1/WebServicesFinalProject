@@ -5,12 +5,8 @@ const reminderSchema = new mongoose.Schema(
             type: String,
             required: [true, "The reminder needs content to be added"]
         },
-        check:{
+        checkbox:{
             type: Boolean,
-            required: false
-        },
-        title:{
-            type: String,
             required: false
         },
         deadline:{
@@ -25,12 +21,12 @@ const reminderSchema = new mongoose.Schema(
             type: Boolean,
             required: false
         },
-        friend: {
-            type: Boolean,
+        team: {
+            type: String,
             required: false
         },
         user: {
-    
+            email: []
         }
 
     }
@@ -62,14 +58,14 @@ const themeSchema = new mongoose.Schema(
     }
 );
 
-const friendSchema = new mongoose.Schema(
+const teamSchema = new mongoose.Schema(
     {
         name: {
             type: String,
             required: true
         }, 
-        email: {
-            type: String,
+        member: {
+            type: [],
             required: true
         }
     }
@@ -78,5 +74,5 @@ const friendSchema = new mongoose.Schema(
 const reminder = mongoose.model('reminder', reminderSchema);
 const user = mongoose.model('user', userSchema);
 const theme = mongoose.model('theme', themeSchema);
-const friend = mongoose.model('friend', friendSchema);
-module.exports = {reminder, user, theme, friend};
+const team = mongoose.model('team', teamSchema);
+module.exports = {reminder, user, theme, team};

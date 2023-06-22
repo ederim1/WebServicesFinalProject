@@ -81,13 +81,10 @@
             "type": "object",
             "properties": {
               "reminder": {
-                "example": "any"
+                "example": "Do laundry"
               },
-              "check": {
+              "checkbox": {
                 "example": false
-              },
-              "title": {
-                "example": "any"
               },
               "deadline": {
                 "example": "08/03/2023"
@@ -98,7 +95,7 @@
               "priority": {
                 "example": false
               },
-              "friend": {
+              "team": {
                 "example": false
               }
             }
@@ -168,11 +165,8 @@
                 "reminder": {
                   "example": "any"
                 },
-                "check": {
+                "checkbox": {
                   "example": false
-                },
-                "title": {
-                  "example": "any"
                 },
                 "deadline": {
                   "example": "08/03/2023"
@@ -183,7 +177,7 @@
                 "priority": {
                   "example": false
                 },
-                "friend": {
+                "team": {
                   "example": false
                 }
               }
