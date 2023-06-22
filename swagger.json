@@ -12,7 +12,7 @@
   ],
   "tags": [{
     "name": "Reminders",
-    "description": "Everything about your Pets",
+    "description": "Everything your reminders",
     "externalDocs": {
       "description": "Find out more",
       "url": "http://swagger.io"
@@ -28,7 +28,7 @@
   },
   {
     "name": "Reminders base URL",
-    "description": "Everything about your Users",
+    "description": "",
     "externalDocs": {
       "description": "Find out more",
       "url": "http://swagger.io"
@@ -122,6 +122,7 @@
     },
     "/reminders/{id}": {
       "get": {
+        "summary": "Shows a reminder by ID",
         "tags":["Reminders"],
         "description": "",
         "parameters": [{
@@ -150,6 +151,7 @@
       },
       "put": {
         "tags":["Reminders"],
+        "summary": "Updates a reminder by ID",
         "description": "",
         "parameters": [{
             "name": "id",
@@ -208,6 +210,7 @@
       },
       "delete": {
         "tags":["Reminders"],
+        "summary": "Deletes a reminder by ID",
         "description": "",
         "parameters": [{
           "name": "id",
@@ -237,6 +240,7 @@
     "/users/": {
       "post": {
         "tags":["Users"],
+        "summary": "Shows all the existing Users",
         "description": "",
         "parameters": [{
           "name": "body",
@@ -272,6 +276,7 @@
     "/users/{id}": {
       "delete": {
         "tags":["Users"],
+        "summary": "Shows user by ID",
         "description": "",
         "parameters": [{
           "name": "id",
