@@ -10,8 +10,33 @@
   "schemes": [
     "https"
   ],
+  "tags": [{
+    "name": "Reminders",
+    "description": "Everything about your Pets",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  },
+  {
+    "name": "Users",
+    "description": "Everything about your Users",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  },
+  {
+    "name": "Reminders base URL",
+    "description": "Everything about your Users",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  }],
   "paths": {
     "/": {
+      "tags":["Reminders base URL"],
       "get": {
         "description": "",
         "parameters": [],
@@ -24,6 +49,7 @@
     },
     "/api-docs": {
       "get": {
+        "tags":["Reminders base URL"],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -31,6 +57,8 @@
     },
     "/reminders/": {
       "get": {
+        "summary": "Shows all the existing reminders",
+        "tags":["Reminders"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -43,40 +71,39 @@
         }
       },
       "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": 
-            {
-              "type": "object",
-              "properties": {
-                "reminder": {
-                  "example": "any"
-                },
-                "check": {
-                  "example": false
-                },
-                "title": {
-                  "example": "any"
-                },
-                "deadline": {
-                  "example": "08/03/2023"
-                },
-                "place": {
-                  "example": "Rexburg"
-                },
-                "priority": {
-                  "example": false
-                },
-                "friend": {
-                  "example": false
-                }
+        "tags": ["Reminders"],
+        "summary": "Adds a new reminder",
+        "description": "Adds a new reminder",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "reminder": {
+                "example": "any"
+              },
+              "check": {
+                "example": false
+              },
+              "title": {
+                "example": "any"
+              },
+              "deadline": {
+                "example": "08/03/2023"
+              },
+              "place": {
+                "example": "Rexburg"
+              },
+              "priority": {
+                "example": false
+              },
+              "friend": {
+                "example": false
               }
             }
           }
-        ],
+        }],
         "responses": {
           "422": {
             "description": "Unprocessable Entity"
@@ -95,15 +122,14 @@
     },
     "/reminders/{id}": {
       "get": {
+        "tags":["Reminders"],
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"
@@ -123,9 +149,9 @@
         }
       },
       "put": {
+        "tags":["Reminders"],
         "description": "",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "id",
             "in": "path",
             "required": true,
@@ -134,8 +160,7 @@
           {
             "name": "body",
             "in": "body",
-            "schema":
-            {
+            "schema": {
               "type": "object",
               "properties": {
                 "reminder": {
@@ -182,15 +207,14 @@
         }
       },
       "delete": {
+        "tags":["Reminders"],
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"
@@ -212,25 +236,23 @@
     },
     "/users/": {
       "post": {
+        "tags":["Users"],
         "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": 
-            {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "Claudio Parker"
-                },
-                "email": {
-                  "example": "claudio@parker.com"
-                }
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "example": "Claudio Parker"
+              },
+              "email": {
+                "example": "claudio@parker.com"
               }
             }
           }
-        ],
+        }],
         "responses": {
           "422": {
             "description": "Unprocessable Entity"
@@ -245,18 +267,18 @@
             "description": "Authentication is required for this route"
           }
         }
-      }},
-      "/users/{id}": {
+      }
+    },
+    "/users/{id}": {
       "delete": {
+        "tags":["Users"],
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"

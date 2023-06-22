@@ -4,10 +4,12 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const env = require('dotenv').config();
 const createError = require('http-errors');
+const cors = require('cors');
 
 bodyParser.urlencoded({ extended: false });
 
 app.use(bodyParser.json());
+app.use(cors());
 
 const port = process.env.PORT;
 const host = process.env.HOST;
