@@ -8,7 +8,7 @@ const controller = {}
 // GET ALL reminderS
 controller.getAllReminders = async(req, res) => {
     try {
-        const reminders = await model.find({"user.email[0]": req.oidc.user.email});
+        const reminders = await model.find({ "user.email": { $elemMatch: { $eq: req.oidc.user.email } } });
         console.log(`after I send the get to mongo this is what I get back ${reminders}`)
         console.log(`stringify version ${JSON.stringify(reminders)}`)
 
