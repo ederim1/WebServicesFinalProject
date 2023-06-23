@@ -96,7 +96,7 @@
                 "example": false
               },
               "team": {
-                "example": false
+                "example": "los Godines"
               }
             }
           }
@@ -113,6 +113,9 @@
           },
           "401": {
             "description": "Authentication is required for this route"
+          },
+          "201": {
+            "description": "Reminder created successfully"
           }
         }
       }
@@ -178,7 +181,7 @@
                   "example": false
                 },
                 "team": {
-                  "example": false
+                  "example": "los Godines"
                 }
               }
             }
@@ -263,6 +266,10 @@
           },
           "401": {
             "description": "Authentication is required for this route"
+          },
+          "201": {
+            "description": "User created successfully"
+          }
           }
         }
       }
@@ -297,5 +304,4 @@
         }
       }
     }
-  }
 }

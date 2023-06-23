@@ -26,6 +26,7 @@ const reminderSchema = new mongoose.Schema(
             required: false
         },
         user: {
+            name:[],
             email: []
         }
 
