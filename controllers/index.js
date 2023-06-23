@@ -12,7 +12,7 @@ controller.getAllReminders = async(req, res) => {
         console.log(`after I send the get to mongo this is what I get back ${reminders}`)
         console.log(`stringify version ${reminders}`)
 
-        res.status(200).json(JSON.stringify(reminders));
+        res.status(200).json(reminders);
     } catch (err) {
         res.status(500).json({message: err.message})
     }
