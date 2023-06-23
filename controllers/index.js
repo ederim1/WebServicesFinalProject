@@ -9,7 +9,7 @@ const controller = {}
 controller.getAllReminders = async(req, res) => {
     try {
         const reminders = await model.find({"user.email[0]": req.oidc.user.email});
-        res.status(200).json(reminders);
+        res.status(200).json(JSON.stringify(reminders));
     } catch (err) {
         res.status(500).json({message: err.message})
     }
