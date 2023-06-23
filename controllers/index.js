@@ -43,8 +43,10 @@ controller.addReminder = async(req, res) => {
         console.log(`this is the name from OAuth ${name}`)
         console.log(`this is the email from OAuth ${email}`)
         req.result.user = {name, email}
-        console.log(`this is what I'm trying to send to mongo${req.result}`)
+        console.log(`this is what I'm trying to send to mongo${JSON.stringify(req.result)}`)
         const reminder = await model.create(req.result);
+        console.log(`after I send the info to mongo this is what I get back ${reminder}`)
+
         res.status(201).json(reminder);
     } catch (err) {
         res.status(500).json({message: err.message});
