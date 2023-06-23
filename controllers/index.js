@@ -9,7 +9,7 @@ const controller = {}
 controller.getAllReminders = async(req, res) => {
     try {
         const query = { "user.email": { $elemMatch: { $eq: req.oidc.user.email } } };
-        const reminders = await model.find(query.select("-user"));
+        const reminders = await model.find(query).select("-user");
         console.log(`after I send the get to mongo this is what I get back ${reminders}`)
         res.status(200).json(reminders);
     } catch (err) {
