@@ -3,6 +3,7 @@ const model = require('../models/index');
 const teamModel = model.team; 
 const reminderModel = model.reminder; 
 const createError = require('http-errors');
+const { json } = require('body-parser');
 
 const controller = {}
 
@@ -23,11 +24,11 @@ controller.getRemindersByTeam = async(req, res) => {
 // POST team
 controller.addTeam = async(req, res) => {
     try {
-        console.log(`this is what I send to mongo ${req.result}`)
+        console.log(`this is what I send to mongo ${JSON.stringify(req.result)}`)
         const team = await teamModel.create(req.result);
         console.log(`and this is what mongo sent back ${team}`)
 
-        res.status(201).json(reminder);
+        res.status(201).json(team);
     } catch (err) {
         res.status(500).json({message: err.message});
     }
