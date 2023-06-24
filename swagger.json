@@ -185,7 +185,17 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": "Los Godines",
+              "email": ["example@email.com", "another@example.com", "last@example.com"]
+            }
+          }
+        }],
         "responses": {
           "201": {
             "description": "Created"
