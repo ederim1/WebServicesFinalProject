@@ -20,7 +20,15 @@
   },
   {
     "name": "Users",
-    "description": "Everything about your Users",
+    "description": "Everything about Users",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  },
+  {
+    "name": "Teams",
+    "description": "Everything about Teams",
     "externalDocs": {
       "description": "Find out more",
       "url": "http://swagger.io"
@@ -306,6 +314,8 @@
     },
     "/teams/": {
       "get": {
+        "tags":["Teams"],
+        "summary": "Show reminders by team",
         "description": "",
         "parameters": [],
         "responses": {
@@ -318,6 +328,8 @@
         }
       },
       "post": {
+        "tags":["Teams"],
+        "summary": "Create Team",
         "description": "",
         "parameters": [{
           "name": "body",
@@ -349,6 +361,8 @@
     },
     "/teams/{id}": {
       "delete": {
+        "tags":["Teams"],
+        "summary": "Delete Team by id",
         "description": "",
         "parameters": [
           {
@@ -359,8 +373,14 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "201": {
+            "description": "Created"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
