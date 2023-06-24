@@ -191,8 +191,12 @@
           "schema": {
             "type": "object",
             "properties": {
-              "name": "Los Godines",
-              "email": ["example@email.com", "another@example.com", "last@example.com"]
+              "name": {
+                "example": "Los Godines"
+              },
+              "email": {
+                "example": ["example@email.com", "another@example.com"]
+              }
             }
           }
         }],
