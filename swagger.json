@@ -196,7 +196,7 @@
               },
               "members": {
                 "emails": {
-                  "example": ["example@email.com", "another@example.com"]
+                  
                 }
               }
             }
