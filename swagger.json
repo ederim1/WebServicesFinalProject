@@ -195,7 +195,9 @@
                 "example": "Los Godines"
               },
               "members": {
-                "example": ["example@email.com", "another@example.com"]
+                "emails": {
+                  "example": ["example@email.com", "another@example.com"]
+                }
               }
             }
           }
