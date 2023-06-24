@@ -23,8 +23,9 @@ controller.getRemindersByTeam = async(req, res) => {
 // POST team
 controller.addTeam = async(req, res) => {
     try {
-        
-        const reminder = await teamModel.create(req.result);
+        console.log(`this is what I send to mongo ${req.result}`)
+        const team = await teamModel.create(req.result);
+        console.log(`and this is what mongo sent back ${team}`)
 
         res.status(201).json(reminder);
     } catch (err) {
