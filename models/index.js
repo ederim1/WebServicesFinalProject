@@ -65,8 +65,8 @@ const teamSchema = new mongoose.Schema(
             type: String,
             required: true
         }, 
-        member: {
-            type: [],
+        members: {
+            emails: [],
             required: true
         }
     }

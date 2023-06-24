@@ -45,14 +45,14 @@ const checkUserSchema = async(req,res,next) => {
 
 // ---------------------------------theme
 const themeSchema = Joi.object({
-    name: Joi.string().required(),
-    member: Joi.string().required()
+    color: Joi.string().required(),
+    font: Joi.string().required()
 });
 
 const checkThemeSchema = async(req,res,next) => {
     try {
-        const user = req.body;
-        const result = await themeSchema.validateAsync(user);
+        const theme = req.body;
+        const result = await themeSchema.validateAsync(theme);
         req.result = result;
         next();
     } catch (err) {
@@ -62,4 +62,23 @@ const checkThemeSchema = async(req,res,next) => {
     }
 }
 
-module.exports = {checkReminderSchema, checkUserSchema, checkThemeSchema};
+// ---------------------------------theme
+const teamSchema = Joi.object({
+    name: Joi.string().required(),
+    members: Joi.array().required()
+});
+
+const checkTeamSchema = async(req,res,next) => {
+    try {
+        const team = req.body;
+        const result = await teamSchema.validateAsync(team);
+        req.result = result;
+        next();
+    } catch (err) {
+        if(err.isJoi === true) {
+            return res.status(422).json({message: err.message});
+        }
+    }
+}
+
+module.exports = {checkReminderSchema, checkUserSchema, checkThemeSchema, checkTeamSchema};

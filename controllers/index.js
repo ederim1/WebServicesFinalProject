@@ -42,6 +42,7 @@ controller.addReminder = async(req, res) => {
     try {
         const{ name, email } = req.oidc.user;
         req.result.user = {name, email}
+
         const reminder = await model.create(req.result);
 
         res.status(201).json(reminder);
@@ -81,7 +82,7 @@ controller.deleteReminder = async(req,res,next) => {
             res.status(200).json(reminder);
         }
     } catch (err) {
-        // res.status(500).json({message: err.message})
+        
         if(err instanceof mongoose.CastError){
             next(createError(400, "Invalid Reminder Id"))
             return

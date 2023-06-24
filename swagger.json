@@ -36,7 +36,6 @@
   }],
   "paths": {
     "/": {
-      "tags":["Reminders base URL"],
       "get": {
         "description": "",
         "parameters": [],
@@ -49,7 +48,6 @@
     },
     "/api-docs": {
       "get": {
-        "tags":["Reminders base URL"],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -57,8 +55,6 @@
     },
     "/reminders/": {
       "get": {
-        "summary": "Shows all the existing reminders",
-        "tags":["Reminders"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -71,237 +67,155 @@
         }
       },
       "post": {
-        "tags": ["Reminders"],
-        "summary": "Adds a new reminder",
-        "description": "Adds a new reminder",
-        "parameters": [{
-          "name": "body",
-          "in": "body",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "reminder": {
-                "example": "Do laundry"
-              },
-              "checkbox": {
-                "example": false
-              },
-              "deadline": {
-                "example": "08/03/2023"
-              },
-              "place": {
-                "example": "Rexburg"
-              },
-              "priority": {
-                "example": false
-              },
-              "team": {
-                "example": "los Godines"
-              }
-            }
-          }
-        }],
+        "description": "",
+        "parameters": [],
         "responses": {
+          "201": {
+            "description": "Created"
+          },
           "422": {
             "description": "Unprocessable Entity"
           },
-          "200": {
-            "description": "OK"
-          },
           "500": {
             "description": "Internal Server Error"
-          },
-          "401": {
-            "description": "Authentication is required for this route"
-          },
-          "201": {
-            "description": "Reminder created successfully"
           }
         }
       }
     },
     "/reminders/{id}": {
       "get": {
-        "summary": "Shows a reminder by ID",
-        "tags":["Reminders"],
         "description": "",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        }],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          },
-          "404": {
-            "description": "Product does not exist"
-          },
-          "400": {
-            "description": "Invalid reminder Id"
-          },
-          "401": {
-            "description": "Authentication is required for this route"
-          }
-        }
-      },
-      "put": {
-        "tags":["Reminders"],
-        "summary": "Updates a reminder by ID",
-        "description": "",
-        "parameters": [{
+        "parameters": [
+          {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "reminder": {
-                  "example": "any"
-                },
-                "checkbox": {
-                  "example": false
-                },
-                "deadline": {
-                  "example": "08/03/2023"
-                },
-                "place": {
-                  "example": "Rexburg"
-                },
-                "priority": {
-                  "example": false
-                },
-                "team": {
-                  "example": "los Godines"
-                }
-              }
-            }
           }
         ],
         "responses": {
-          "422": {
-            "description": "Unprocessable Entity"
-          },
-          "404": {
-            "description": "Product does not exist"
-          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
           "204": {
             "description": "No Content"
           },
-          "400": {
-            "description": "Invalid reminder Id"
-          },
-          "401": {
-            "description": "Authentication is required for this route"
+          "422": {
+            "description": "Unprocessable Entity"
           }
         }
       },
       "delete": {
-        "tags":["Reminders"],
-        "summary": "Deletes a reminder by ID",
         "description": "",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          },
-          "404": {
-            "description": "Product does not exist"
-          },
-          "400": {
-            "description": "Invalid reminder Id"
-          },
-          "401": {
-            "description": "Authentication is required for this route"
           }
         }
       }
     },
     "/users/": {
       "post": {
-        "tags":["Users"],
-        "summary": "Shows all the existing Users",
         "description": "",
-        "parameters": [{
-          "name": "body",
-          "in": "body",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "example": "Claudio Parker"
-              },
-              "email": {
-                "example": "claudio@parker.com"
-              }
-            }
-          }
-        }],
+        "parameters": [],
         "responses": {
+          "201": {
+            "description": "Created"
+          },
           "422": {
             "description": "Unprocessable Entity"
           },
-          "200": {
-            "description": "OK"
-          },
           "500": {
             "description": "Internal Server Error"
-          },
-          "401": {
-            "description": "Authentication is required for this route"
-          },
-          "201": {
-            "description": "User created successfully"
-          }
           }
         }
       }
     },
     "/users/{id}": {
       "delete": {
-        "tags":["Users"],
-        "summary": "Shows user by ID",
         "description": "",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/teams/": {
+      "get": {
+        "description": "",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created"
           },
-          "404": {
-            "description": "Product does not exist"
+          "422": {
+            "description": "Unprocessable Entity"
           },
-          "400": {
-            "description": "Invalid reminder Id"
-          },
-          "401": {
-            "description": "Authentication is required for this route"
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/teams/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
     }
+  }
 }
