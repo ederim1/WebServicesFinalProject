@@ -194,7 +194,7 @@
               "name": {
                 "example": "Los Godines"
               },
-              "email": {
+              "members": {
                 "example": ["example@email.com", "another@example.com"]
               }
             }
