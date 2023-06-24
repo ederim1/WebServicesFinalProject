@@ -14,7 +14,7 @@ routes.get('/',requiresAuth(), (req, res) => {
     });
 
 // post new team
-routes.post('/', requiresAuth(), teamValidation.checkReminderSchema, (req, res) => {
+routes.post('/', requiresAuth(), teamValidation.checkTeamSchema, (req, res) => {
     if(req.oidc.isAuthenticated()) {
         controller.addTeam(req, res);
     } else {

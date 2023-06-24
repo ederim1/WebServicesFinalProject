@@ -62,7 +62,7 @@ const checkThemeSchema = async(req,res,next) => {
     }
 }
 
-// ---------------------------------theme
+// ---------------------------------team
 const teamSchema = Joi.object({
     name: Joi.string().required(),
     members: Joi.array().required()
