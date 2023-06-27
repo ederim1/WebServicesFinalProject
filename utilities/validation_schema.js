@@ -1,13 +1,14 @@
 const Joi = require('@hapi/joi')
 
+// ---------------------------------Reminder
+
 const reminderSchema = Joi.object({
     reminder: Joi.string().required().min(1),
-    check: Joi.boolean().required(),
-    title: Joi.string(),
+    checkbox: Joi.boolean().required(),
     deadline: Joi.string(),
     place: Joi.string(),
     priority: Joi.boolean(),
-    reminder: Joi.boolean()
+    team: Joi.string()
 })
 
 const checkReminderSchema = async(req,res,next) => {
@@ -23,6 +24,7 @@ const checkReminderSchema = async(req,res,next) => {
     }
 }
 
+// ---------------------------------User
 const userSchema = Joi.object({
     name: Joi.string().required(),
     email: Joi.string().required()
@@ -41,4 +43,42 @@ const checkUserSchema = async(req,res,next) => {
     }
 }
 
-module.exports = {checkReminderSchema, checkUserSchema};
+// ---------------------------------theme
+const themeSchema = Joi.object({
+    color: Joi.string().required(),
+    font: Joi.string().required()
+});
+
+const checkThemeSchema = async(req,res,next) => {
+    try {
+        const theme = req.body;
+        const result = await themeSchema.validateAsync(theme);
+        req.result = result;
+        next();
+    } catch (err) {
+        if(err.isJoi === true) {
+            return res.status(422).json({message: err.message});
+        }
+    }
+}
+
+// ---------------------------------team
+const teamSchema = Joi.object({
+    name: Joi.string().required(),
+    members: Joi.array().required()
+});
+
+const checkTeamSchema = async(req,res,next) => {
+    try {
+        const team = req.body;
+        const result = await teamSchema.validateAsync(team);
+        req.result = result;
+        next();
+    } catch (err) {
+        if(err.isJoi === true) {
+            return res.status(422).json({message: err.message});
+        }
+    }
+}
+
+module.exports = {checkReminderSchema, checkUserSchema, checkThemeSchema, checkTeamSchema};

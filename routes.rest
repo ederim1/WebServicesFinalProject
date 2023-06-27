@@ -1,5 +1,5 @@
 ### GET SWAGGER
-GET http://localhost:8080/api-docs   HTTP/1.1
+GET http://localhost:3030/api-docs   HTTP/1.1
 
 ### get login
 GET http://localhost:8080/login HTTP/1.1

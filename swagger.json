@@ -20,7 +20,15 @@
   },
   {
     "name": "Users",
-    "description": "Everything about your Users",
+    "description": "Everything about Users",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  },
+  {
+    "name": "Teams",
+    "description": "Everything about Teams",
     "externalDocs": {
       "description": "Find out more",
       "url": "http://swagger.io"
@@ -57,7 +65,7 @@
     },
     "/reminders/": {
       "get": {
-        "summary": "Shows all the existing reminders",
+        "summary": "Shows all reminders of the logged in user",
         "tags":["Reminders"],
         "description": "",
         "parameters": [],
@@ -81,13 +89,10 @@
             "type": "object",
             "properties": {
               "reminder": {
-                "example": "any"
+                "example": "Do laundry"
               },
-              "check": {
+              "checkbox": {
                 "example": false
-              },
-              "title": {
-                "example": "any"
               },
               "deadline": {
                 "example": "08/03/2023"
@@ -98,8 +103,8 @@
               "priority": {
                 "example": false
               },
-              "friend": {
-                "example": false
+              "team": {
+                "example": "los Godines"
               }
             }
           }
@@ -116,6 +121,9 @@
           },
           "401": {
             "description": "Authentication is required for this route"
+          },
+          "201": {
+            "description": "Reminder created successfully"
           }
         }
       }
@@ -168,11 +176,8 @@
                 "reminder": {
                   "example": "any"
                 },
-                "check": {
+                "checkbox": {
                   "example": false
-                },
-                "title": {
-                  "example": "any"
                 },
                 "deadline": {
                   "example": "08/03/2023"
@@ -183,8 +188,8 @@
                 "priority": {
                   "example": false
                 },
-                "friend": {
-                  "example": false
+                "team": {
+                  "example": "los Godines"
                 }
               }
             }
@@ -269,6 +274,10 @@
           },
           "401": {
             "description": "Authentication is required for this route"
+          },
+          "201": {
+            "description": "User created successfully"
+          }
           }
         }
       }
@@ -302,6 +311,78 @@
           }
         }
       }
+    },
+    "/teams/": {
+      "get": {
+        "tags":["Teams"],
+        "summary": "Show reminders by team",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags":["Teams"],
+        "summary": "Create Team",
+        "description": "",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "example": "Los Godines"
+              },
+              "members": {
+                "example": ["example@email.com", "another@example.com"]
+              }
+            }
+          }
+        }],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/teams/{id}": {
+      "delete": {
+        "tags":["Teams"],
+        "summary": "Delete Team by id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
-  }
 }

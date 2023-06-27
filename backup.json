@@ -1,0 +1,235 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "My API",
+      "description": "Description",
+      "version": "1.0.0"
+    },
+    "host": "web-services-final-project.onrender.com",
+    "basePath": "/",
+    "schemes": [
+      "https"
+    ],
+    "tags": [{
+      "name": "Reminders",
+      "description": "Everything your reminders",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    },
+    {
+      "name": "Users",
+      "description": "Everything about your Users",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    },
+    {
+      "name": "Reminders base URL",
+      "description": "",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }],
+    "paths": {
+      "/": {
+        "get": {
+          "description": "",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/api-docs": {
+        "get": {
+          "description": "",
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/reminders/": {
+        "get": {
+          "description": "",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "post": {
+          "description": "",
+          "parameters": [],
+          "responses": {
+            "201": {
+              "description": "Created"
+            },
+            "422": {
+              "description": "Unprocessable Entity"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/reminders/{id}": {
+        "get": {
+          "description": "",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        },
+        "put": {
+          "description": "",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content"
+            },
+            "422": {
+              "description": "Unprocessable Entity"
+            }
+          }
+        },
+        "delete": {
+          "description": "",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/users/": {
+        "post": {
+          "description": "",
+          "parameters": [],
+          "responses": {
+            "201": {
+              "description": "Created"
+            },
+            "422": {
+              "description": "Unprocessable Entity"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/users/{id}": {
+        "delete": {
+          "description": "",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/teams/": {
+        "get": {
+          "description": "",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "post": {
+          "description": "",
+          "parameters": [{
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Los Godines"
+                },
+                "members": {
+                  "example": ["example@email.com", "another@example.com"]
+                }
+              }
+            }
+          }],
+          "responses": {
+            "201": {
+              "description": "Created"
+            },
+            "422": {
+              "description": "Unprocessable Entity"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/teams/{id}": {
+        "delete": {
+          "description": "",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      }
+    }
+  }
