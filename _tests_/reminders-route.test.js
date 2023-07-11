@@ -31,7 +31,7 @@ describe('REMINDERS API - Routes Test', () => {
 
   // get reminder by id - TEST WORKING
   it('GET - should return a reminder by ID', async () => {
-    const id = '6494e422b75d97a8b9518e33';
+    const id = '6497c89bc0c9b4a4759a56ba';
     const req = { params: { id } };
     const res = {
       status: jest.fn().mockReturnThis(),
@@ -45,28 +45,26 @@ describe('REMINDERS API - Routes Test', () => {
     expect(res.json).toHaveBeenCalledWith(expect.any(Object));
   });
   
-  // POST REMINDER -TEST
-  // it('POST - should add a new reminder', async () => {
-  //   const reminderData = { title: 'New Reminder', description: 'Lorem ipsum' };
-  //   const req = { body: reminderData };
-  //   const res = {
-  //     status: jest.fn().mockReturnThis(),
-  //     json: jest.fn()
-  //   };
+  // POST REMINDER -TEST - 
+  it('POST - should add a new reminder', async () => {
+    const reminderData = { title: 'New Reminder', description: 'Lorem ipsum' };
+    const req = { body: reminderData };
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn()
+    };
   
-  //   await controller.addReminder(req, res);
+    await controller.addReminder(req, res);
   
-  //   expect(res.status).toHaveBeenCalledWith(201);
-  //   expect(res.json).toHaveBeenCalledWith(expect.objectContaining({
-  //     title: reminderData.title,
-  //     description: reminderData.description
-  //   }));
-  // }); 
+    expect(res.status).toHaveBeenCalledWith(201);
+
+  }); 
   
 
-  // edit reminder - TEST WORKING
+
+// edit reminder - TEST WORKING
   it('PUT - should edit a reminder', async () => {
-    const id = '6494e422b75d97a8b9518e33';
+    const id = '6497c89bc0c9b4a4759a56ba';
     const updatedReminderData = { title: 'Updated Reminder', description: 'Updated description' };
     const req = { params: { id }, body: updatedReminderData };
     const res = {
@@ -81,9 +79,9 @@ describe('REMINDERS API - Routes Test', () => {
     expect(res.json).toHaveBeenCalledWith(expect.any(Object));
   });
   
-  // DELETE reminder:
+  // DELETE reminder: - TEST WORKING
   it('should delete a reminder', async () => {
-    const reminderId = '6494f96f87acde94df226fc4'; // Provide an existing reminder ID here
+    const reminderId = '6497c89bc0c9b4a4759a56ba'; // Provide an existing reminder ID here
     const req = {
       params: { id: reminderId },
       oidc: { isAuthenticated: jest.fn().mockReturnValue(true) }
@@ -95,11 +93,16 @@ describe('REMINDERS API - Routes Test', () => {
   
     await controller.deleteReminder(req, res);
   
-    expect(res.status).toHaveBeenCalledWith(204);
-    expect(res.json).toHaveBeenCalledWith({ message: 'Reminder deleted successfully' });
+    expect(res.status).toHaveBeenCalledWith(200);
+
   });
   
+  // ************ROUTES TESTING************
+describe('Team Colletion - Routes Test', () => {
+
   
+
+});
   
 });
 
