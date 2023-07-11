@@ -5,14 +5,55 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "web-services-final-project.onrender.com",
+  "host": "localhost:3030",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
+  "tags": [{
+    "name": "Reminders",
+    "description": "Everything about reminders",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  },
+  {
+    "name": "Users",
+    "description": "Everything about Users",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  },
+  {
+    "name": "Teams",
+    "description": "Everything about Teams",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  },
+  {
+    "name": "Oauth",
+    "description": "Login route",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  },
+  {
+    "name": "Reminders base URL",
+    "description": "",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  }],
   "paths": {
     "/": {
       "get": {
+        "tags":["Oauth"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -24,6 +65,7 @@
     },
     "/api-docs": {
       "get": {
+        "tags":["Reminders base URL"],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -31,6 +73,8 @@
     },
     "/reminders/": {
       "get": {
+        "summary": "Shows all reminders of the logged in user",
+        "tags":["Reminders"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -43,111 +87,242 @@
         }
       },
       "post": {
-        "description": "",
-        "parameters": [],
+        "tags": ["Reminders"],
+        "summary": "Adds a new reminder",
+        "description": "Adds a new reminder",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "reminder": {
+                "example": "Do laundry"
+              },
+              "checkbox": {
+                "example": false
+              },
+              "deadline": {
+                "example": "08/03/2023"
+              },
+              "place": {
+                "example": "Rexburg"
+              },
+              "priority": {
+                "example": false
+              },
+              "team": {
+                "example": "los Godines"
+              }
+            }
+          }
+        }],
         "responses": {
-          "201": {
-            "description": "Created"
-          },
           "422": {
             "description": "Unprocessable Entity"
           },
+          "200": {
+            "description": "OK"
+          },
           "500": {
             "description": "Internal Server Error"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
+          },
+          "201": {
+            "description": "Reminder created successfully"
           }
         }
       }
     },
     "/reminders/{id}": {
       "get": {
+        "summary": "Shows a reminder by ID",
+        "tags":["Reminders"],
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Product does not exist"
+          },
+          "400": {
+            "description": "Invalid reminder Id"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
           }
         }
       },
       "put": {
+        "tags":["Reminders"],
+        "summary": "Updates a reminder by ID",
         "description": "",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "reminder": {
+                  "example": "any"
+                },
+                "checkbox": {
+                  "example": false
+                },
+                "deadline": {
+                  "example": "08/03/2023"
+                },
+                "place": {
+                  "example": "Rexburg"
+                },
+                "priority": {
+                  "example": false
+                },
+                "team": {
+                  "example": "los Godines"
+                }
+              }
+            }
           }
         ],
         "responses": {
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "404": {
+            "description": "Product does not exist"
+          },
           "204": {
             "description": "No Content"
           },
-          "422": {
-            "description": "Unprocessable Entity"
+          "400": {
+            "description": "Invalid reminder Id"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
           }
         }
       },
       "delete": {
+        "tags":["Reminders"],
+        "summary": "Deletes a reminder by ID",
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Product does not exist"
+          },
+          "400": {
+            "description": "Invalid reminder Id"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
           }
         }
       }
     },
     "/users/": {
       "post": {
+        "tags":["Users"],
+        "summary": "Adds a new User",
         "description": "",
-        "parameters": [],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "example": "Claudio Parker"
+              },
+              "email": {
+                "example": "claudio@parker.com"
+              }
+            }
+          }
+        }],
         "responses": {
-          "201": {
-            "description": "Created"
-          },
           "422": {
             "description": "Unprocessable Entity"
           },
+          "200": {
+            "description": "OK"
+          },
           "500": {
             "description": "Internal Server Error"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
+          },
+          "201": {
+            "description": "User created successfully"
           }
         }
       }
     },
     "/users/{id}": {
       "delete": {
+        "tags":["Users"],
+        "summary": "deletes user by ID",
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Product does not exist"
+          },
+          "400": {
+            "description": "Invalid reminder Id"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
           }
         }
       }
     },
     "/teams/": {
       "get": {
+        "tags":["Teams"],
+        "summary": "Shows all Teams",
         "description": "",
         "parameters": [],
         "responses": {
@@ -160,8 +335,24 @@
         }
       },
       "post": {
+        "tags":["Teams"],
+        "summary": "Adds a new Team",
         "description": "",
-        "parameters": [],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "example": "Los Godines"
+              },
+              "members": {
+                "example": ["example@email.com", "another@example.com"]
+              }
+            }
+          }
+        }],
         "responses": {
           "201": {
             "description": "Created"
@@ -177,6 +368,8 @@
     },
     "/teams/{id}": {
       "delete": {
+        "tags":["Teams"],
+        "summary": "Deletes a Team by Id",
         "description": "",
         "parameters": [
           {
@@ -187,8 +380,14 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "201": {
+            "description": "Created"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
