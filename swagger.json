@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "web-services-final-project.onrender.com/api-docs",
+  "host": "web-services-final-project.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
