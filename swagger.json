@@ -5,10 +5,10 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "localhost:3030",
+  "host": "https://web-services-final-project.onrender.com/api-docs",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "tags": [{
     "name": "Reminders",
