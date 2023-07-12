@@ -380,6 +380,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK, Deleted successfully"
+          },
           "201": {
             "description": "Created"
           },
