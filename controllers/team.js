@@ -38,7 +38,7 @@ controller.addTeam = async(req, res) => {
 controller.deleteTeam = async(req,res,next) => {
     try {
         const {id} = req.params;
-        const team = await model.findByIdAndDelete(id);
+        const team = await teamModel.findByIdAndDelete(id);
         if(!team){
             throw createError(404, "Team does not exist");
         }else{
