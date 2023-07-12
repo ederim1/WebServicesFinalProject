@@ -5,14 +5,14 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "web-services-final-project.onrender.com",
+  "host": "localhost:3030",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "tags": [{
     "name": "Reminders",
-    "description": "Everything your reminders",
+    "description": "Everything about reminders",
     "externalDocs": {
       "description": "Find out more",
       "url": "http://swagger.io"
@@ -35,6 +35,14 @@
     }
   },
   {
+    "name": "Oauth",
+    "description": "Login route",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  },
+  {
     "name": "Reminders base URL",
     "description": "",
     "externalDocs": {
@@ -44,8 +52,8 @@
   }],
   "paths": {
     "/": {
-      "tags":["Reminders base URL"],
       "get": {
+        "tags":["Oauth"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -245,7 +253,7 @@
     "/users/": {
       "post": {
         "tags":["Users"],
-        "summary": "Shows all the existing Users",
+        "summary": "Adds a new User",
         "description": "",
         "parameters": [{
           "name": "body",
@@ -278,14 +286,13 @@
           "201": {
             "description": "User created successfully"
           }
-          }
         }
       }
     },
     "/users/{id}": {
       "delete": {
         "tags":["Users"],
-        "summary": "Shows user by ID",
+        "summary": "deletes user by ID",
         "description": "",
         "parameters": [{
           "name": "id",
@@ -315,7 +322,7 @@
     "/teams/": {
       "get": {
         "tags":["Teams"],
-        "summary": "Show reminders by team",
+        "summary": "Shows all Teams",
         "description": "",
         "parameters": [],
         "responses": {
@@ -329,7 +336,7 @@
       },
       "post": {
         "tags":["Teams"],
-        "summary": "Create Team",
+        "summary": "Adds a new Team",
         "description": "",
         "parameters": [{
           "name": "body",
@@ -362,7 +369,7 @@
     "/teams/{id}": {
       "delete": {
         "tags":["Teams"],
-        "summary": "Delete Team by id",
+        "summary": "Deletes a Team by Id",
         "description": "",
         "parameters": [
           {
@@ -385,4 +392,5 @@
         }
       }
     }
+  }
 }
