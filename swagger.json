@@ -5,10 +5,10 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "web-services-final-project.onrender.com",
+  "host": "localhost:3030",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "tags": [{
     "name": "Reminders",
@@ -233,7 +233,7 @@
         }],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK, Deleted successfully"
           },
           "500": {
             "description": "Internal Server Error"
@@ -302,7 +302,7 @@
         }],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK, Deleted successfully"
           },
           "500": {
             "description": "Internal Server Error"
@@ -322,7 +322,7 @@
     "/teams/": {
       "get": {
         "tags":["Teams"],
-        "summary": "Shows all Teams",
+        "summary": "Shows all Teams the user is in",
         "description": "",
         "parameters": [],
         "responses": {

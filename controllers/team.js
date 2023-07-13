@@ -9,11 +9,12 @@ const controller = {}
 
 // GET reminders by team
 // it'll only show the reminders that have user's email and the correct team name, 
-controller.getRemindersByTeam = async(req, res) => {
+controller.getTeamsByUser = async(req, res) => {
     try {
-        const query = { "team": req.body.name, "user.email": { $elemMatch: { $eq: req.oidc.user.email } } };
+        const query = {"members": { $elemMatch: { $eq: req.oidc.user.email } } };
 
-        const reminders = await reminderModel.find(query).select("-user");
+        const reminders = await teamModel.find(query);
+        console.log(`this is what mongo sent back ${reminders}  From the getteam query`)
 
         res.status(200).json(reminders);
     } catch (err) {
