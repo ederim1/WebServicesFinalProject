@@ -26,6 +26,7 @@ routes.use('/',require('./routes-swagger.js'));
 routes.use('/reminders', require('./reminders.js'))
 routes.use('/users', require('./user.js'))
 routes.use('/teams', require('./team.js'))
+routes.use('/themes', require('./theme.js'))
 
 
 module.exports = routes;

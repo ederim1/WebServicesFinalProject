@@ -5,7 +5,7 @@ const reminderValidation = require('../utilities/validation_schema');
 const { requiresAuth } = require('express-openid-connect');
 
 
-// get all reminders
+// gets all reminders of the user
 routes.get('/',requiresAuth(), (req, res) => {
     if (req.oidc.isAuthenticated()){
         controller.getAllReminders(req, res) 

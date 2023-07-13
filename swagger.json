@@ -35,6 +35,14 @@
     }
   },
   {
+    "name": "Themes",
+    "description": "Everything about Themes",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  },
+  {
     "name": "Oauth",
     "description": "Login route",
     "externalDocs": {
@@ -391,6 +399,78 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/themes/": {
+      "post": {
+        "tags":["Themes"],
+        "summary": "Adds a new theme",
+        "description": "",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "color": {
+                "example": "red"
+              },
+              "font": {
+                "example": "Arial"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
+          },
+          "201": {
+            "description": "theme created successfully"
+          },
+          "404": {
+            "description": "Product does not exist"
+          }
+        }
+      }
+    },
+    "/themes/{id}": {
+      "delete": {
+        "tags":["Themes"],
+        "summary": "deletes theme by ID",
+        "description": "",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK, Deleted successfully"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Product does not exist"
+          },
+          "400": {
+            "description": "Invalid theme Id"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
           }
         }
       }

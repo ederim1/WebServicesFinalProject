@@ -7,14 +7,12 @@ const { json } = require('body-parser');
 
 const controller = {}
 
-// GET reminders by team
-// it'll only show the reminders that have user's email and the correct team name, 
+// GET teams by user
 controller.getTeamsByUser = async(req, res) => {
     try {
         const query = {"members": { $elemMatch: { $eq: req.oidc.user.email } } };
 
         const reminders = await teamModel.find(query);
-        console.log(`this is what mongo sent back ${reminders}  From the getteam query`)
 
         res.status(200).json(reminders);
     } catch (err) {
@@ -25,10 +23,7 @@ controller.getTeamsByUser = async(req, res) => {
 // POST team
 controller.addTeam = async(req, res) => {
     try {
-        console.log(`this is what I send to mongo ${JSON.stringify(req.result)}`)
         const team = await teamModel.create(req.result);
-        console.log(`and this is what mongo sent back ${team}`)
-
         res.status(201).json(team);
     } catch (err) {
         res.status(500).json({message: err.message});
