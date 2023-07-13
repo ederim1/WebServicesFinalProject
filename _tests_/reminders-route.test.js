@@ -9,6 +9,8 @@ const routes = require('express').Router();
 const { requiresAuth } = require('express-openid-connect');
 const reminderValidation = require('../utilities/validation_schema');
 
+
+//  Remember to use a real ID to have the tests work!
 let server;
 beforeAll((done) => {
   server = app.listen(process.env.TEST_PORT, () => {
