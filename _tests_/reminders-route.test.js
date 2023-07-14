@@ -33,7 +33,7 @@ describe('REMINDERS API - Routes Test', () => {
 
   // get reminder by id - TEST WORKING
   it('GET - should return a reminder by ID', async () => {
-    const id = '6497c8b0c0c9b4a4759a56bc';
+    const id = '649def89bfc70815f560dae5';
     const req = { params: { id } };
     const res = {
       status: jest.fn().mockReturnThis(),
@@ -67,7 +67,7 @@ describe('REMINDERS API - Routes Test', () => {
 
 // edit reminder - TEST WORKING
   it('PUT - should edit a reminder', async () => {
-    const id = '6497c8b0c0c9b4a4759a56bc';
+    const id = '649def89bfc70815f560dae5';
     const updatedReminderData = { title: 'Updated Reminder', description: 'Updated description' };
     const req = { params: { id }, body: updatedReminderData };
     const res = {
@@ -84,7 +84,7 @@ describe('REMINDERS API - Routes Test', () => {
   
   // DELETE reminder: - TEST WORKING
   it('should delete a reminder', async () => {
-    const reminderId = '6497c8b0c0c9b4a4759a56bc'; // Provide an existing reminder ID here
+    const reminderId = '649def89bfc70815f560dae5'; // Provide an existing reminder ID here
     const req = {
       params: { id: reminderId },
       oidc: { isAuthenticated: jest.fn().mockReturnValue(true) }
