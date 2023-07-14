@@ -5,63 +5,63 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "localhost:3030",
+  "host": "web-services-final-project.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "http"
+  "schemes": ["http"],
+  "tags": [
+    {
+      "name": "Reminders",
+      "description": "Everything about reminders",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    },
+    {
+      "name": "Users",
+      "description": "Everything about Users",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    },
+    {
+      "name": "Teams",
+      "description": "Everything about Teams",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    },
+    {
+      "name": "Themes",
+      "description": "Everything about Themes",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    },
+    {
+      "name": "Oauth",
+      "description": "Login route",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    },
+    {
+      "name": "Reminders base URL",
+      "description": "",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }
   ],
-  "tags": [{
-    "name": "Reminders",
-    "description": "Everything about reminders",
-    "externalDocs": {
-      "description": "Find out more",
-      "url": "http://swagger.io"
-    }
-  },
-  {
-    "name": "Users",
-    "description": "Everything about Users",
-    "externalDocs": {
-      "description": "Find out more",
-      "url": "http://swagger.io"
-    }
-  },
-  {
-    "name": "Teams",
-    "description": "Everything about Teams",
-    "externalDocs": {
-      "description": "Find out more",
-      "url": "http://swagger.io"
-    }
-  },
-  {
-    "name": "Themes",
-    "description": "Everything about Themes",
-    "externalDocs": {
-      "description": "Find out more",
-      "url": "http://swagger.io"
-    }
-  },
-  {
-    "name": "Oauth",
-    "description": "Login route",
-    "externalDocs": {
-      "description": "Find out more",
-      "url": "http://swagger.io"
-    }
-  },
-  {
-    "name": "Reminders base URL",
-    "description": "",
-    "externalDocs": {
-      "description": "Find out more",
-      "url": "http://swagger.io"
-    }
-  }],
   "paths": {
     "/": {
       "get": {
-        "tags":["Oauth"],
+        "tags": ["Oauth"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -73,7 +73,7 @@
     },
     "/api-docs": {
       "get": {
-        "tags":["Reminders base URL"],
+        "tags": ["Reminders base URL"],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -82,7 +82,7 @@
     "/reminders/": {
       "get": {
         "summary": "Shows all reminders of the logged in user",
-        "tags":["Reminders"],
+        "tags": ["Reminders"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -98,33 +98,35 @@
         "tags": ["Reminders"],
         "summary": "Adds a new reminder",
         "description": "Adds a new reminder",
-        "parameters": [{
-          "name": "body",
-          "in": "body",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "reminder": {
-                "example": "Do laundry"
-              },
-              "checkbox": {
-                "example": false
-              },
-              "deadline": {
-                "example": "08/03/2023"
-              },
-              "place": {
-                "example": "Rexburg"
-              },
-              "priority": {
-                "example": false
-              },
-              "team": {
-                "example": "los Godines"
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "reminder": {
+                  "example": "Do laundry"
+                },
+                "checkbox": {
+                  "example": false
+                },
+                "deadline": {
+                  "example": "08/03/2023"
+                },
+                "place": {
+                  "example": "Rexburg"
+                },
+                "priority": {
+                  "example": false
+                },
+                "team": {
+                  "example": "los Godines"
+                }
               }
             }
           }
-        }],
+        ],
         "responses": {
           "422": {
             "description": "Unprocessable Entity"
@@ -147,14 +149,16 @@
     "/reminders/{id}": {
       "get": {
         "summary": "Shows a reminder by ID",
-        "tags":["Reminders"],
+        "tags": ["Reminders"],
         "description": "",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -174,10 +178,11 @@
         }
       },
       "put": {
-        "tags":["Reminders"],
+        "tags": ["Reminders"],
         "summary": "Updates a reminder by ID",
         "description": "",
-        "parameters": [{
+        "parameters": [
+          {
             "name": "id",
             "in": "path",
             "required": true,
@@ -230,15 +235,17 @@
         }
       },
       "delete": {
-        "tags":["Reminders"],
+        "tags": ["Reminders"],
         "summary": "Deletes a reminder by ID",
         "description": "",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK, Deleted successfully"
@@ -260,24 +267,26 @@
     },
     "/users/": {
       "post": {
-        "tags":["Users"],
+        "tags": ["Users"],
         "summary": "Adds a new User",
         "description": "",
-        "parameters": [{
-          "name": "body",
-          "in": "body",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "example": "Claudio Parker"
-              },
-              "email": {
-                "example": "claudio@parker.com"
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Claudio Parker"
+                },
+                "email": {
+                  "example": "claudio@parker.com"
+                }
               }
             }
           }
-        }],
+        ],
         "responses": {
           "422": {
             "description": "Unprocessable Entity"
@@ -299,15 +308,17 @@
     },
     "/users/{id}": {
       "delete": {
-        "tags":["Users"],
+        "tags": ["Users"],
         "summary": "deletes user by ID",
         "description": "",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK, Deleted successfully"
@@ -329,7 +340,7 @@
     },
     "/teams/": {
       "get": {
-        "tags":["Teams"],
+        "tags": ["Teams"],
         "summary": "Shows all Teams the user is in",
         "description": "",
         "parameters": [],
@@ -343,24 +354,26 @@
         }
       },
       "post": {
-        "tags":["Teams"],
+        "tags": ["Teams"],
         "summary": "Adds a new Team",
         "description": "",
-        "parameters": [{
-          "name": "body",
-          "in": "body",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "example": "Los Godines"
-              },
-              "members": {
-                "example": ["example@email.com", "another@example.com"]
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Los Godines"
+                },
+                "members": {
+                  "example": ["example@email.com", "another@example.com"]
+                }
               }
             }
           }
-        }],
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -376,7 +389,7 @@
     },
     "/teams/{id}": {
       "delete": {
-        "tags":["Teams"],
+        "tags": ["Teams"],
         "summary": "Deletes a Team by Id",
         "description": "",
         "parameters": [
@@ -405,24 +418,26 @@
     },
     "/themes/": {
       "post": {
-        "tags":["Themes"],
+        "tags": ["Themes"],
         "summary": "Adds a new theme",
         "description": "",
-        "parameters": [{
-          "name": "body",
-          "in": "body",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "color": {
-                "example": "red"
-              },
-              "font": {
-                "example": "Arial"
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "example": "red"
+                },
+                "font": {
+                  "example": "Arial"
+                }
               }
             }
           }
-        }],
+        ],
         "responses": {
           "422": {
             "description": "Unprocessable Entity"
@@ -447,15 +462,17 @@
     },
     "/themes/{id}": {
       "delete": {
-        "tags":["Themes"],
+        "tags": ["Themes"],
         "summary": "deletes theme by ID",
         "description": "",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK, Deleted successfully"
