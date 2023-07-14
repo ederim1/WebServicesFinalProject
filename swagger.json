@@ -5,14 +5,14 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "web-services-final-project.onrender.com",
+  "host": "localhost:3030",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "tags": [{
     "name": "Reminders",
-    "description": "Everything your reminders",
+    "description": "Everything about reminders",
     "externalDocs": {
       "description": "Find out more",
       "url": "http://swagger.io"
@@ -35,6 +35,22 @@
     }
   },
   {
+    "name": "Themes",
+    "description": "Everything about Themes",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  },
+  {
+    "name": "Oauth",
+    "description": "Login route",
+    "externalDocs": {
+      "description": "Find out more",
+      "url": "http://swagger.io"
+    }
+  },
+  {
     "name": "Reminders base URL",
     "description": "",
     "externalDocs": {
@@ -44,8 +60,8 @@
   }],
   "paths": {
     "/": {
-      "tags":["Reminders base URL"],
       "get": {
+        "tags":["Oauth"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -225,7 +241,7 @@
         }],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK, Deleted successfully"
           },
           "500": {
             "description": "Internal Server Error"
@@ -245,7 +261,7 @@
     "/users/": {
       "post": {
         "tags":["Users"],
-        "summary": "Shows all the existing Users",
+        "summary": "Adds a new User",
         "description": "",
         "parameters": [{
           "name": "body",
@@ -278,14 +294,13 @@
           "201": {
             "description": "User created successfully"
           }
-          }
         }
       }
     },
     "/users/{id}": {
       "delete": {
         "tags":["Users"],
-        "summary": "Shows user by ID",
+        "summary": "deletes user by ID",
         "description": "",
         "parameters": [{
           "name": "id",
@@ -295,7 +310,7 @@
         }],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK, Deleted successfully"
           },
           "500": {
             "description": "Internal Server Error"
@@ -315,7 +330,7 @@
     "/teams/": {
       "get": {
         "tags":["Teams"],
-        "summary": "Show reminders by team",
+        "summary": "Shows all Teams the user is in",
         "description": "",
         "parameters": [],
         "responses": {
@@ -329,7 +344,7 @@
       },
       "post": {
         "tags":["Teams"],
-        "summary": "Create Team",
+        "summary": "Adds a new Team",
         "description": "",
         "parameters": [{
           "name": "body",
@@ -362,7 +377,7 @@
     "/teams/{id}": {
       "delete": {
         "tags":["Teams"],
-        "summary": "Delete Team by id",
+        "summary": "Deletes a Team by Id",
         "description": "",
         "parameters": [
           {
@@ -373,6 +388,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK, Deleted successfully"
+          },
           "201": {
             "description": "Created"
           },
@@ -384,5 +402,78 @@
           }
         }
       }
+    },
+    "/themes/": {
+      "post": {
+        "tags":["Themes"],
+        "summary": "Adds a new theme",
+        "description": "",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "color": {
+                "example": "red"
+              },
+              "font": {
+                "example": "Arial"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
+          },
+          "201": {
+            "description": "theme created successfully"
+          },
+          "404": {
+            "description": "Product does not exist"
+          }
+        }
+      }
+    },
+    "/themes/{id}": {
+      "delete": {
+        "tags":["Themes"],
+        "summary": "deletes theme by ID",
+        "description": "",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK, Deleted successfully"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "404": {
+            "description": "Product does not exist"
+          },
+          "400": {
+            "description": "Invalid theme Id"
+          },
+          "401": {
+            "description": "Authentication is required for this route"
+          }
+        }
+      }
     }
+  }
 }

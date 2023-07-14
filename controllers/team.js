@@ -7,13 +7,12 @@ const { json } = require('body-parser');
 
 const controller = {}
 
-// GET reminders by team
-// it'll only show the reminders that have user's email and the correct team name, 
-controller.getRemindersByTeam = async(req, res) => {
+// GET teams by user
+controller.getTeamsByUser = async(req, res) => {
     try {
-        const query = { "team": req.body.name, "user.email": { $elemMatch: { $eq: req.oidc.user.email } } };
+        const query = {"members": { $elemMatch: { $eq: req.oidc.user.email } } };
 
-        const reminders = await reminderModel.find(query).select("-user");
+        const reminders = await teamModel.find(query);
 
         res.status(200).json(reminders);
     } catch (err) {
@@ -24,10 +23,7 @@ controller.getRemindersByTeam = async(req, res) => {
 // POST team
 controller.addTeam = async(req, res) => {
     try {
-        console.log(`this is what I send to mongo ${JSON.stringify(req.result)}`)
         const team = await teamModel.create(req.result);
-        console.log(`and this is what mongo sent back ${team}`)
-
         res.status(201).json(team);
     } catch (err) {
         res.status(500).json({message: err.message});
@@ -38,7 +34,7 @@ controller.addTeam = async(req, res) => {
 controller.deleteTeam = async(req,res,next) => {
     try {
         const {id} = req.params;
-        const team = await model.findByIdAndDelete(id);
+        const team = await teamModel.findByIdAndDelete(id);
         if(!team){
             throw createError(404, "Team does not exist");
         }else{

@@ -1,13 +1,16 @@
 const mongoose = require('mongoose');
 const reminderModel = require('../models/index');
 const model = reminderModel.reminder; 
+const teamModel = reminderModel.team;
 const createError = require('http-errors');
 
 const controller = {}
 
-// GET ALL reminderS
+// GETS ALL REMINDERS OF THE USER
 controller.getAllReminders = async(req, res) => {
     try {
+
+        // search for the reminders of the user
         const query = { "user.email": { $elemMatch: { $eq: req.oidc.user.email } } };
         const reminders = await model.find(query).select("-user");
 

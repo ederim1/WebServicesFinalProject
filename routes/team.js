@@ -7,7 +7,7 @@ const { requiresAuth } = require('express-openid-connect');
 // get all team reminders
 routes.get('/',requiresAuth(), (req, res) => {
     if (req.oidc.isAuthenticated()){
-        controller.getRemindersByTeam(req, res) 
+        controller.getTeamsByUser(req, res) 
     } else {
         res.redirect('/login');
     }

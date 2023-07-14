@@ -28,9 +28,9 @@ const mongodb = process.env.MONGO_URI;
 mongoose
   .connect(mongodb, { useNewUrlParser: true })
   .then(() => {
-    console.log('Connected to MongoDB');
+    
     app.listen(port, () => {
-      console.log(`Server running at http://${host}:${port}`);
+
     });
   })
   .catch((err) => {
@@ -54,3 +54,13 @@ app.use((err, req, res, next) => {
     },
   });
 });
+
+
+// Logging if we are connected to MongoDB
+console.log('************Connected to MongoDB************');
+
+// Logging what port we're connected to:
+console.log(`************Server running at http://${host}:${port}************`);
+
+module.exports = app
+
