@@ -6,11 +6,21 @@ const env = require('dotenv').config();
 const createError = require('http-errors');
 const cors = require('cors');
 
+const { graphqlHTTP } = require('express-graphql');
+const schema = require('./graphSchema/schema');
 bodyParser.urlencoded({ extended: false });
 
 app.use(bodyParser.json());
 app.use(cors());
 
+// Setting up GraphQL
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema,
+    graphiql: true,
+  })
+);
 const port = process.env.PORT;
 const host = process.env.HOST;
 const mongodb = process.env.MONGO_URI;
@@ -30,18 +40,21 @@ mongoose
 app.use('/', require('./routes'));
 
 // 404 handler and pass to error handler
-app.use((req, res, next) => {next(createError(404, "Not Found"))});
+app.use((req, res, next) => {
+  next(createError(404, 'Not Found'));
+});
 
 // Error Handler
-app.use((err, req,res,next)=>{
+app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.send({
     error: {
       status: err.status || 500,
-      message: err.message
-    }
-  })
+      message: err.message,
+    },
+  });
 });
+
 
 // Logging if we are connected to MongoDB
 console.log('************Connected to MongoDB************');
@@ -50,3 +63,4 @@ console.log('************Connected to MongoDB************');
 console.log(`************Server running at http://${host}:${port}************`);
 
 module.exports = app
+
